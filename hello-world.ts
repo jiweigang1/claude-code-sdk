@@ -3,8 +3,9 @@ import type { HookJSONOutput } from "@anthropic-ai/claude-agent-sdk";
 import * as path from "path";
 
 async function main() {
+  console.log(path.join(process.cwd(), 'agent'));
   const q = query({
-    prompt: 'Hello, Claude! Please introduce yourself in one sentence.',
+    prompt: '查询一下 supabae 的项目，通过 mcp 查询',
     options: {
       maxTurns: 100,
       cwd: path.join(process.cwd(), 'agent'),
@@ -12,7 +13,7 @@ async function main() {
       executable: "node", // Use the current node binary path
       allowedTools: [
         "Task", "Bash", "Glob", "Grep", "LS", "ExitPlanMode", "Read", "Edit", "MultiEdit", "Write", "NotebookEdit",
-        "WebFetch", "TodoWrite", "WebSearch", "BashOutput", "KillBash"
+        "WebFetch", "TodoWrite", "WebSearch", "BashOutput", "KillBash", "mcp__supabase__list_projects","list_projects"
       ],
       hooks: {
         PreToolUse: [
